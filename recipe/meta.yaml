@@ -31,6 +31,7 @@ requirements:
     - gstreamer {{ version }}
     - gst-plugins-base {{ version }}
     - glib
+    - gobject-introspection
     - libintl-devel  # [not linux]
     - libiconv
     - zlib
