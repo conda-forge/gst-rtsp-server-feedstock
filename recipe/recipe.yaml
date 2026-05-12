@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: "1.28.2"
+  version: "1.28.3"
 
 package:
   name: gst-rtsp-server
@@ -9,10 +9,10 @@ package:
 
 source:
   - url: https://gstreamer.freedesktop.org/src/gst-rtsp-server/gst-rtsp-server-${{ version }}.tar.xz
-    sha256: 917c58b9ff14f91a6b5cd1c3af16c9fcfdf5d8d78d3d167c7e8fa5bdda35f947
+    sha256: 9379585ea9d30a00811f4590760208d3412e2ea6dbd9562b07fba6872f275664
 
 build:
-  number: 1
+  number: 0
 
 requirements:
   build:
@@ -41,29 +41,28 @@ requirements:
     - gstreamer 1.28.2.*
     - gst-plugins-base 1.28.2.*
     - if: not ppc64le
-      then: libsoup
-    - if: not ppc64le
-      then: glib-networking
+      then:
+        - libsoup
+        - glib-networking
   ignore_run_exports:
     from_package:
       - if: build_platform != target_platform
-        then: python
-      - if: build_platform != target_platform
-        then: python_abi
-
+        then:
+          - python
+          - python_abi
 tests:
   - script:
       - if: unix
-        then: 
-            - test -f $PREFIX/include/gstreamer-1.0/gst/rtsp-server/rtsp-server.h
-            - test -f $PREFIX/lib/libgstrtspserver-1.0${SHLIB_EXT}
-            - test -f $PREFIX/lib/gstreamer-1.0/libgstrtspclientsink${SHLIB_EXT}
+        then:
+          - test -f $PREFIX/include/gstreamer-1.0/gst/rtsp-server/rtsp-server.h
+          - test -f $PREFIX/lib/libgstrtspserver-1.0${SHLIB_EXT}
+          - test -f $PREFIX/lib/gstreamer-1.0/libgstrtspclientsink${SHLIB_EXT}
       - if: win
-        then: 
-            - if not exist %LIBRARY_INC%\\gstreamer-1.0\\gst\\rtsp-server\\rtsp-server.h exit 1
-            - if not exist %LIBRARY_BIN%\\gstrtspserver-1.0-0.dll exit 1
-            - if not exist %LIBRARY_LIB%\\gstreamer-1.0\\gstrtspclientsink.dll exit 1
-            - gst-inspect-1.0 --plugin rtspclientsink
+        then:
+          - if not exist %LIBRARY_INC%\\gstreamer-1.0\\gst\\rtsp-server\\rtsp-server.h exit 1
+          - if not exist %LIBRARY_BIN%\\gstrtspserver-1.0-0.dll exit 1
+          - if not exist %LIBRARY_LIB%\\gstreamer-1.0\\gstrtspclientsink.dll exit 1
+          - gst-inspect-1.0 --plugin rtspclientsink
 
 about:
   summary: GStreamer RTSP Server
