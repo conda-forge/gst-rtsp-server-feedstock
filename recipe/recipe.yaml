@@ -39,7 +39,7 @@ requirements:
     - zlib
   run:
     - gstreamer ==${{ version }}
-    - gst-plugins-base 1.28.2.*
+    - gst-plugins-base ==${{ version }}
     - if: not ppc64le
       then:
         - libsoup
