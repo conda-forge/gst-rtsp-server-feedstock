@@ -29,8 +29,8 @@ requirements:
     - python <${{ 3.15 }}
     - setuptools <81
   host:
-    - gstreamer 1.28.2.*
-    - gst-plugins-base 1.28.2.*
+    - gstreamer ==${{ version }} # was 1.28.2.*
+    - gst-plugins-base ==${{ version }}# 1.28.2.*
     - gobject-introspection
     - glib
     - if: not linux
