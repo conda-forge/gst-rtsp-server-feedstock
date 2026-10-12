@@ -30,6 +30,9 @@ requirements:
     - setuptools <81
   host:
     - python
+    - pkg-config
+    - meson
+    - ninja
     - gstreamer ==${{ version }} # was 1.28.2.*
     - gst-plugins-base ==${{ version }}# 1.28.2.*
     - gobject-introspection
