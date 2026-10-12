@@ -29,20 +29,17 @@ requirements:
     - python <${{ 3.15 }}
     - setuptools <81
   host:
-    - python
     - pkg-config
     - meson
     - ninja
     - gstreamer ==${{ version }}
     - gst-plugins-base ==${{ version }}
-    - gobject-introspection
     - glib
     - if: not linux
       then: libintl-devel
     - libiconv
     - zlib
   run:
-    - python
     - gstreamer ==${{ version }}
     - gst-plugins-base ==${{ version }}
     - if: not ppc64le
