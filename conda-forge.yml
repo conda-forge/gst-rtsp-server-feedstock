@@ -2,8 +2,10 @@ build_platform:
   linux_aarch64: linux_aarch64
   linux_ppc64le: linux_ppc64le
   osx_arm64: osx_64
+provider:
+  linux_aarch64: default
 github:
-  branch_name: main
+  branch_name: 1.26.x
   tooling_branch_name: main
 conda_build:
   error_overlinking: true
