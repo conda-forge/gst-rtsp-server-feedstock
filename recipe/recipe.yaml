@@ -12,14 +12,14 @@ source:
     sha256: b87ed564d857a226a3135bd2c42eae7b40eb64031cb9cbce124722af92cc8b9d
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
     - ${{ compiler('c') }}
     - ${{ stdlib('c') }}
     - ${{ compiler('cxx') }}
-    - pkg-config
+    - pkgconfig
     - meson
     - ninja
     - gettext-tools
@@ -29,14 +29,14 @@ requirements:
     - python <${{ 3.15 }}
     - setuptools <81
   host:
-    - pkg-config
+    - pkgconfig
     - meson
     - ninja
     - gstreamer ==${{ version }}
     - gst-plugins-base ==${{ version }}
     - glib
     - if: not linux
-      then: libintl-devel
+      then: libintl-devel <1
     - libiconv
     - zlib
   run:
